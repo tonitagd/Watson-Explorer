@@ -2,9 +2,9 @@ package watson.services;
 
 import org.springframework.web.client.RestTemplate;
 
-import watson.models.QueryResult;
+import watson.models.QueryResultType;
 
-public class RestService implements WatsonService {
+public class RestSearchService implements SearchService {
 
     private RestTemplate restTemplate = new RestTemplate();
 
@@ -13,9 +13,9 @@ public class RestService implements WatsonService {
     private static final String AUTHENTICATION_FUNCTION = "&v.username=admin&v.password=admin";
 
     @Override
-    public QueryResult searchFor(String query, String source) {
+    public QueryResultType searchFor(String query, String source) {
         String functionName = String.format("%s%s%s%s", "query-search&sources=", source, "&query=", query);
-        return executeFunction(functionName, QueryResult.class);
+        return executeFunction(functionName, QueryResultType.class);
     }
 
     /**

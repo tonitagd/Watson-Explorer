@@ -20,7 +20,7 @@ public class DocumentType {
     private String url;
 
     @XmlElement(name = "cache", required = true)
-    private Cache cache;
+    private CacheType cache;
 
     @XmlElements({@XmlElement(name = "content")})
     private List<ContentType> contents;

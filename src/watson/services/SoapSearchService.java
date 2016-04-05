@@ -8,7 +8,7 @@ import velocity.objects.QueryResults;
 import velocity.soap.Authentication;
 import velocity.types.QuerySearch;
 
-public class SoapService implements WatsonService {
+public class SoapSearchService implements SearchService {
 
     private static final String ENDPOINT_ADDR = WATSON_EXPLORER_ENGINE_URL
             + "api-soap&wsdl=1&specialize-for=&use-types=true";
@@ -19,21 +19,27 @@ public class SoapService implements WatsonService {
 
     private Authentication authentication;
 
-    public SoapService() {
+    public SoapSearchService() {
         super();
         createConnection();
         createAuthentication();
     }
 
+    /**
+     * Creates a connection to the WEX Engine server
+     */
     private void createConnection() {
-        this.valociryService = new VelocityService();
-        this.port = valociryService.getVelocityPort();
+        valociryService = new VelocityService();
+        port = valociryService.getVelocityPort();
         ((javax.xml.ws.BindingProvider) port).getRequestContext()
                                              .put(javax.xml.ws.BindingProvider.ENDPOINT_ADDRESS_PROPERTY, ENDPOINT_ADDR);
     }
 
+    /**
+     * Creates SOAP authentication against the WEX Engine server
+     */
     private void createAuthentication() {
-        this.authentication = new Authentication();
+        authentication = new Authentication();
         authentication.setUsername("admin");
         authentication.setPassword("admin");
     }

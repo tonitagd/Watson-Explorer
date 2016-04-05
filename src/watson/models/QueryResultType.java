@@ -12,7 +12,7 @@ import javax.xml.namespace.QName;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "query-results")
-public class QueryResult implements QuerySearchResult{
+public class QueryResultType{
 
     @XmlElement(name = "list")
     private ListType list;

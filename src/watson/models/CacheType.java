@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 
 @XmlRootElement
-public class Cache {
+public class CacheType {
 
     @XmlAttribute(name = "url")
     @XmlSchemaType(name = "anyURI")

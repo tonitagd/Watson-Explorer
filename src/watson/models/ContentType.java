@@ -1,4 +1,4 @@
-package watson.rest.models;
+package watson.models;
 
 import java.util.HashMap;
 import java.util.Map;

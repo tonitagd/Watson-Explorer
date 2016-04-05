@@ -2,23 +2,17 @@ package watson.services;
 
 import org.springframework.web.client.RestTemplate;
 
-import watson.rest.models.QueryResult;
+import watson.models.QueryResult;
 
-public class RestService {
+public class RestService implements WatsonService {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    private static String WATSON_EXPLORER_ENGINE_URL = "http://localhost:9080/vivisimo/cgi-bin/velocity.exe?v.app=api-rest&v.function=";
+    private static String ENDPOINT_ADDR = WATSON_EXPLORER_ENGINE_URL + "api-rest&v.function=";
 
     private static final String AUTHENTICATION_FUNCTION = "&v.username=admin&v.password=admin";
 
-    /**
-     * Searches for a query in given source
-     * 
-     * @param query
-     *        - the search query
-     * @return The parsed result of the search query
-     */
+    @Override
     public QueryResult searchFor(String query, String source) {
         String functionName = String.format("%s%s%s%s", "query-search&sources=", source, "&query=", query);
         return executeFunction(functionName, QueryResult.class);
@@ -29,7 +23,7 @@ public class RestService {
      * 
      * @param functionName
      *        - the name of the function, which will be executed
-     * @return The parsed result of the executed function 
+     * @return The parsed result of the executed function
      */
     private <T> T executeFunction(String functionName, Class<T> clazz) {
         String methodURL = getMethodURL(functionName);
@@ -37,12 +31,19 @@ public class RestService {
     }
 
     /**
-     * Generates the URL to the REST call 
-     * @param functionName  - the name of the function, which will be executed
+     * Generates the URL to the REST call
+     * 
+     * @param functionName
+     *        - the name of the function, which will be executed
      * @return a URL to the REST service
      */
     private String getMethodURL(String functionName) {
-        return String.format("%s%s%s", WATSON_EXPLORER_ENGINE_URL, functionName, AUTHENTICATION_FUNCTION);
+        return String.format("%s%s%s", ENDPOINT_ADDR, functionName, AUTHENTICATION_FUNCTION);
+    }
+
+    @Override
+    public <T> String stringifyQueryResult(T results) {
+        return results.toString();
     }
 
 }

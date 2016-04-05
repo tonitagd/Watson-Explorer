@@ -1,4 +1,4 @@
-package watson.rest.models;
+package watson.models;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import javax.xml.namespace.QName;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "query-results")
-public class QueryResult {
+public class QueryResult implements QuerySearchResult{
 
     @XmlElement(name = "list")
     private ListType list;

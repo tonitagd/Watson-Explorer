@@ -57,8 +57,6 @@ public class SoapSearchService implements SearchService {
     @Override
     public <T> String stringifyQueryResult(T results) {
         StringBuilder builder = new StringBuilder();
-        builder.append("Search result: \n\n");
-
         builder.append("List: \n[documents=");
 
         for (Document document : ((QueryResults) results).getList().getDocument()) {

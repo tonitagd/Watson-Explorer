@@ -1,12 +1,12 @@
-package watson.controllers;
+package watson.controllers.base;
 
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
-import watson.services.SearchService;
+import watson.services.base.SearchService;
 
-public abstract class BaseController {
+public abstract class BaseSearchController {
 
     private String source;
 
@@ -14,25 +14,25 @@ public abstract class BaseController {
 
     private SearchService service;
 
-    public BaseController(SearchService service) {
+    public BaseSearchController(SearchService service) {
         super();
         this.source = "DB_Search";
         this.service = service;
     }
 
-    public BaseController(SearchService service, String source) {
+    public BaseSearchController(SearchService service, String source) {
         super();
         this.source = source;
     }
 
     /**
-     * Executes a request to the WEX SOAP or REST API using given service and writes the result to the
+     * Executes a request to the WEX Engine using specified service and writes the result to the
      * {@link HttpServletResponse}
      * 
      * @param response
      *        - the {@link HttpServletResponse} to which the result is written
-     * @param service
-     *        - the {@link SearchService} from which the call is made
+     * @param query
+     *        - the search query, for which will be searched in WEX Engine's sourcce
      * @throws IOException
      *         when the response cannot be written
      */

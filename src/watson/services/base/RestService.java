@@ -1,33 +1,40 @@
-package watson.services;
+package watson.services.base;
 
 import org.springframework.web.client.RestTemplate;
 
-import watson.models.QueryResultType;
+import watson.services.WEXEngineService;
 
-public class RestSearchService implements SearchService {
-
-    private RestTemplate restTemplate = new RestTemplate();
+public abstract class RestService implements WEXEngineService {
 
     private static String ENDPOINT_ADDR = WATSON_EXPLORER_ENGINE_URL + "api-rest&v.function=";
 
     private static final String AUTHENTICATION_FUNCTION = "&v.username=admin&v.password=admin";
 
-    @Override
-    public QueryResultType searchFor(String query, String source) {
-        String functionName = String.format("%s%s%s%s", "query-search&sources=", source, "&query=", query);
-        return executeFunction(functionName, QueryResultType.class);
-    }
+    protected RestTemplate restTemplate = new RestTemplate();
 
     /**
      * Executes a Watson Explorer Engine function
      * 
      * @param functionName
      *        - the name of the function, which will be executed
+     * @param clazz
+     *        - the {@link Class} from which type the result is
      * @return The parsed result of the executed function
      */
-    private <T> T executeFunction(String functionName, Class<T> clazz) {
+    protected <T> T executeFunction(String functionName, Class<T> clazz) {
         String methodURL = getMethodURL(functionName);
         return restTemplate.postForObject(methodURL, null, clazz);
+    }
+
+    /**
+     * Executes a Watson Explorer Engine function without response
+     * 
+     * @param functionName
+     *        - the name of the function, which will be executed
+     */
+    protected void executeFunction(String functionName) {
+        String methodURL = getMethodURL(functionName);
+        restTemplate.postForLocation(methodURL, null);
     }
 
     /**
@@ -39,11 +46,6 @@ public class RestSearchService implements SearchService {
      */
     private String getMethodURL(String functionName) {
         return String.format("%s%s%s", ENDPOINT_ADDR, functionName, AUTHENTICATION_FUNCTION);
-    }
-
-    @Override
-    public <T> String stringifyQueryResult(T results) {
-        return results.toString();
     }
 
 }

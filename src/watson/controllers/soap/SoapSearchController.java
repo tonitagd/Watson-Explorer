@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import watson.controllers.BaseController;
-import watson.services.SoapSearchService;
+import watson.controllers.base.BaseSearchController;
+import watson.services.search.SoapSearchService;
 
 @Controller
 @RequestMapping("/soap")
-public class SoapSearchController extends BaseController {
+public class SoapSearchController extends BaseSearchController {
 
     public SoapSearchController() {
         super(new SoapSearchService());

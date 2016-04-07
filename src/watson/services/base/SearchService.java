@@ -1,10 +1,8 @@
-package watson.services;
+package watson.services.base;
 
 import watson.models.QueryResultType;
 
 public interface SearchService {
-
-    public static final String WATSON_EXPLORER_ENGINE_URL = "http://localhost:9080/vivisimo/cgi-bin/velocity.exe?v.app=";
 
     /**
      * Searches for a query in given source

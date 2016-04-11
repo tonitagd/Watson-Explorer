@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import watson.controllers.base.BaseSearchController;
-import watson.services.search.RestSearchService;
+import watson.services.rest.search.RestSearchService;
 
 @Controller
 @RequestMapping("/rest")

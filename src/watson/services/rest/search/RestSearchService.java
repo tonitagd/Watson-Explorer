@@ -1,8 +1,8 @@
-package watson.services.search;
+package watson.services.rest.search;
 
 import watson.models.QueryResultType;
-import watson.services.base.RestService;
 import watson.services.base.SearchService;
+import watson.services.rest.base.RestService;
 
 public class RestSearchService extends RestService implements SearchService {
 

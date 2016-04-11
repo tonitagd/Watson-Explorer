@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import watson.controllers.base.BaseSearchController;
-import watson.services.search.SoapSearchService;
+import watson.services.soap.search.SoapSearchService;
 
 @Controller
 @RequestMapping("/soap")

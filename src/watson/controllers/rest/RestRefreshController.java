@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import watson.controllers.base.BaseRefreshController;
-import watson.services.stage.RestRefreshService;
+import watson.services.rest.stage.RestRefreshService;
 
 @Controller
 @RequestMapping("/rest")

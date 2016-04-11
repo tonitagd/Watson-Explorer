@@ -1,4 +1,4 @@
-package watson.services.base;
+package watson.services.soap.base;
 
 import velocity.VelocityPort;
 import velocity.VelocityService;

@@ -1,4 +1,4 @@
-package watson.services.base;
+package watson.services.rest.base;
 
 import org.springframework.web.client.RestTemplate;
 

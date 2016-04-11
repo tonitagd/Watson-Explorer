@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import watson.controllers.base.BaseRefreshController;
-import watson.services.stage.SoapRefreshService;
+import watson.services.soap.stage.SoapRefreshService;
 
 @Controller
 @RequestMapping("/soap")

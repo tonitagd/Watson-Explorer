@@ -1,11 +1,11 @@
-package watson.services.search;
+package watson.services.soap.search;
 
 import velocity.objects.Content;
 import velocity.objects.Document;
 import velocity.objects.QueryResults;
 import velocity.types.QuerySearch;
 import watson.services.base.SearchService;
-import watson.services.base.SoapService;
+import watson.services.soap.base.SoapService;
 
 public class SoapSearchService extends SoapService implements SearchService {
 

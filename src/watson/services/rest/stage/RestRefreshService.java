@@ -1,7 +1,7 @@
-package watson.services.stage;
+package watson.services.rest.stage;
 
 import watson.services.base.RefreshService;
-import watson.services.base.RestService;
+import watson.services.rest.base.RestService;
 
 public class RestRefreshService extends RestService implements RefreshService {
 

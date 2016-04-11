@@ -15,14 +15,13 @@ public abstract class BaseRefreshController {
     private RefreshService service;
 
     public BaseRefreshController(RefreshService service) {
-        super();
-        this.collection = "DB_Search";
-        this.service = service;
+        this(service,"DB_Search");
     }
 
     public BaseRefreshController(RefreshService service, String collection) {
         super();
         this.collection = collection;
+        this.service = service;
     }
 
     /**

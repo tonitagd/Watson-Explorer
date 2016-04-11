@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import watson.services.base.SearchService;
 
+//TODO Think of a way to extract logic from BaseSearchController and BaseRefreshController
 public abstract class BaseSearchController {
 
     private String source;
@@ -15,14 +16,13 @@ public abstract class BaseSearchController {
     private SearchService service;
 
     public BaseSearchController(SearchService service) {
-        super();
-        this.source = "DB_Search";
-        this.service = service;
+        this(service, "DB_Search");
     }
 
     public BaseSearchController(SearchService service, String source) {
         super();
         this.source = source;
+        this.service = service;
     }
 
     /**
@@ -32,13 +32,13 @@ public abstract class BaseSearchController {
      * @param response
      *        - the {@link HttpServletResponse} to which the result is written
      * @param query
-     *        - the search query, for which will be searched in WEX Engine's sourcce
+     *        - the search query, for which will be searched in WEX Engine's source
      * @throws IOException
      *         when the response cannot be written
      */
     protected <T> void search(HttpServletResponse response, String query) throws IOException {
-        T searchForOrder = service.searchFor(query, source);
-        String resultToString = service.stringifyQueryResult(searchForOrder);
+        T searchResult = service.searchFor(query, source);
+        String resultToString = service.stringifyQueryResult(searchResult);
         response.getWriter().write(getMessage(query) + resultToString);
     }
 

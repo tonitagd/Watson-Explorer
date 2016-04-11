@@ -16,7 +16,7 @@ public class SoapSearchService extends SoapService implements SearchService {
         querySearch.setQuery(query);
         querySearch.setAuthentication(authentication);
         velocity.types.QuerySearchResponse querySearchResponse = port.querySearch(querySearch);
-        return (QueryResults) querySearchResponse.getAny();
+        return (QueryResults) querySearchResponse.getAny() ;
     }
 
     @Override

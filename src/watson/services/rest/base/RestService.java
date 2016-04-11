@@ -6,7 +6,7 @@ import watson.services.WEXEngineService;
 
 public abstract class RestService implements WEXEngineService {
 
-    private static String ENDPOINT_ADDR = WATSON_EXPLORER_ENGINE_URL + "api-rest&v.function=";
+    private static final String ENDPOINT_ADDR = WATSON_EXPLORER_ENGINE_URL + "api-rest&v.function=";
 
     private static final String AUTHENTICATION_FUNCTION = "&v.username=admin&v.password=admin";
 

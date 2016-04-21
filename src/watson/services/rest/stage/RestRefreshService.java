@@ -8,7 +8,7 @@ public class RestRefreshService extends RestService implements RefreshService {
     public void refresh(String collection) {
         String functionName = String.format("%s%s%s",
                                             "search-collection-crawler-start&collection=",
-                                            collection,
+                                            collection+"2",
                                             "&subcollection=staging&type=refresh-new");
         executeFunction(functionName);
     }

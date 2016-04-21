@@ -1,5 +1,7 @@
 package watson.services.rest.base;
 
+import java.net.URI;
+
 import org.springframework.web.client.RestTemplate;
 
 import watson.services.WEXEngineService;
@@ -34,7 +36,7 @@ public abstract class RestService implements WEXEngineService {
      */
     protected void executeFunction(String functionName) {
         String methodURL = getMethodURL(functionName);
-        restTemplate.postForLocation(methodURL, null);
+        URI postForLocation = restTemplate.postForLocation(methodURL, null);
     }
 
     /**
